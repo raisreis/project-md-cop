@@ -2,5 +2,8 @@
 .vscode
 
 
+# npm
+node_modules
+
 # macOS
 .DS_Store
