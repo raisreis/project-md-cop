@@ -40,10 +40,25 @@ function activate(context) {
     const disposable = vscode.commands.registerCommand('md-cop.helloWorld', () => {
         // The code you place here will be executed every time your command is executed
         // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World from md-cop!');
+        console.log("cookies");
+        vscode.window.showInformationMessage('Hello Kitty!');
     });
     context.subscriptions.push(disposable);
 }
+vscode.window.showInformationMessage('from out');
+vscode.window.onDidOpenTerminal(terminal => {
+    console.log('opened', terminal);
+});
+vscode.window.onDidChangeNotebookEditorSelection((x) => {
+});
+vscode.languages.registerHoverProvider('markdown', {
+    provideHover(document, position, token) {
+        console.log('hover hover ...');
+        const contents = new vscode.MarkdownString(`[yahoo-link](https://www.yahoo.com)`);
+        contents.isTrusted = true;
+        return new vscode.Hover(contents);
+    }
+});
 // This method is called when your extension is deactivated
 function deactivate() { }
 //# sourceMappingURL=extension.js.map
